@@ -11,6 +11,8 @@ components:
     prebuildImage: ghcr.io/diploi/starter-web-app/react:[tag]
     env:
       include:
+        - supabase.APP_ENDPOINT:VITE_SUPABASE_URL
+        - supabase.ANON_KEY:VITE_SUPABASE_ANON_KEY
         - name: __VITE_RUNTIME_BUILD
           value: true
   - name: Supabase

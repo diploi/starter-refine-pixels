@@ -1,13 +1,11 @@
-import { createClient } from "@refinedev/supabase";
+import { createClient } from '@refinedev/supabase';
 
-// use env variables in production
-const SUPABASE_URL = "https://ifbdnkfqbypnkmwcfdes.supabase.co";
-const SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmYmRua2ZxYnlwbmttd2NmZGVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA5MTgzOTEsImV4cCI6MTk4NjQ5NDM5MX0.ThQ40H-xay-Hi5cf7H9mKccMCvAX3iCvYVJDe0KiHtw";
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY, {
+export const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   db: {
-    schema: "public",
+    schema: 'public',
   },
   auth: {
     persistSession: true,

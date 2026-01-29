@@ -1,30 +1,10 @@
-import type { AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from '@refinedev/core';
 
-import { supabaseClient } from "../utility";
+import { supabaseClient } from '../utility';
 
 export const authProvider: AuthProvider = {
   login: async ({ email, password, providerName }) => {
     try {
-      // sign in with oauth
-      if (providerName) {
-        const { data, error } = await supabaseClient.auth.signInWithOAuth({
-          provider: providerName,
-        });
-
-        if (error) {
-          return {
-            success: false,
-            error,
-          };
-        }
-
-        if (data?.url) {
-          return {
-            success: true,
-          };
-        }
-      }
-
       // sign in with email and password
       const { data, error } = await supabaseClient.auth.signInWithPassword({
         email,
@@ -53,8 +33,8 @@ export const authProvider: AuthProvider = {
     return {
       success: false,
       error: {
-        message: "Login failed",
-        name: "Invalid email or password",
+        message: 'Login failed',
+        name: 'Invalid email or password',
       },
     };
   },
@@ -87,8 +67,8 @@ export const authProvider: AuthProvider = {
     return {
       success: false,
       error: {
-        message: "Register failed",
-        name: "Invalid email or password",
+        message: 'Register failed',
+        name: 'Invalid email or password',
       },
     };
   },
@@ -123,8 +103,8 @@ export const authProvider: AuthProvider = {
     return {
       success: false,
       error: {
-        message: "Forgot password failed",
-        name: "Invalid email",
+        message: 'Forgot password failed',
+        name: 'Invalid email',
       },
     };
   },
@@ -144,7 +124,7 @@ export const authProvider: AuthProvider = {
       if (data) {
         return {
           success: true,
-          redirectTo: "/",
+          redirectTo: '/',
         };
       }
     } catch (error: any) {
@@ -157,8 +137,8 @@ export const authProvider: AuthProvider = {
     return {
       success: false,
       error: {
-        message: "Update password failed",
-        name: "Invalid password",
+        message: 'Update password failed',
+        name: 'Invalid password',
       },
     };
   },
@@ -174,7 +154,7 @@ export const authProvider: AuthProvider = {
 
     return {
       success: true,
-      redirectTo: "/",
+      redirectTo: '/',
     };
   },
   onError: async (_error: any) => ({}),
@@ -187,8 +167,8 @@ export const authProvider: AuthProvider = {
         return {
           authenticated: false,
           error: {
-            message: "Check failed",
-            name: "Session not found",
+            message: 'Check failed',
+            name: 'Session not found',
           },
           logout: true,
         };
