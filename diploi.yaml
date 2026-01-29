@@ -1,19 +1,18 @@
 diploiVersion: v1.0
 type: starter
-name: Refine Pixels
-description: A funny collaborative drawing app built with Refine and Supabase, along with a Realtime feature.
+name: Collaborative Drawing App
+description: A funny collaborative drawing app built with Refine and Supabase. Supports auth and realtime features.
 previewImageUrls: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
 components:
   - name: React
     identifier: react
     folder: /
-    package: https://github.com/diploi/component-react-vite#v19.1.1
+    package: https://github.com/diploi/component-react-vite#v19.2.4
     prebuildImage: ghcr.io/diploi/starter-web-app/react:[tag]
     env:
       include:
-        - value: this is a value
-          name: SUPABASE_ANON_KEY
-        - supabase.ANON_KEY:SUPABASE_ANON_KEY
+        - name: __VITE_RUNTIME_BUILD
+          value: true
   - name: Supabase
     identifier: supabase
     package: https://github.com/diploi/component-supabase#v2026.02
