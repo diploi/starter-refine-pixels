@@ -1,7 +1,7 @@
 diploiVersion: v1.0
 type: starter
 name: Collaborative Drawing App
-description: A funny collaborative drawing app built with Refine and Supabase. Supports auth and realtime features.
+description: A fun collaborative drawing app built with Refine and Supabase. Supports auth and realtime features.
 previewImageUrls: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
 components:
   - name: React
