@@ -1,8 +1,8 @@
-import React, { type ReactElement } from "react";
-import { useList } from "@refinedev/core";
+import React, { type ReactElement } from 'react';
+import { useList } from '@refinedev/core';
 
-import type { Canvas } from "../../types/canvas";
-import type { Pixel } from "../../types/pixel";
+import type { Canvas } from '../../types/canvas';
+import type { Pixel } from '../../types/pixel';
 
 type DisplayCanvasProps = {
   canvas: Canvas;
@@ -14,26 +14,26 @@ export const DisplayCanvas: React.FC<DisplayCanvasProps> = ({
   children,
 }) => {
   const { result: data } = useList<Pixel>({
-    resource: "pixels",
-    liveMode: "auto",
+    resource: 'pixels',
+    liveMode: 'auto',
     meta: {
-      select: "*, users(id, full_name, avatar_url)",
+      select: '*, profiles(id, full_name, avatar_url)',
     },
     filters: [
       {
-        field: "canvas_id",
-        operator: "eq",
+        field: 'canvas_id',
+        operator: 'eq',
         value: id,
       },
     ],
     sorters: [
       {
-        field: "created_at",
-        order: "desc",
+        field: 'created_at',
+        order: 'desc',
       },
     ],
     pagination: {
-      mode: "off",
+      mode: 'off',
     },
   });
 

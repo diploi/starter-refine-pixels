@@ -13,10 +13,15 @@ components:
       include:
         - supabase.APP_ENDPOINT:VITE_SUPABASE_URL
         - supabase.ANON_KEY:VITE_SUPABASE_ANON_KEY
+        # Enable the "runtime build" feature to populate ENV values for prod deployments
         - name: __VITE_RUNTIME_BUILD
           value: true
   - name: Supabase
     identifier: supabase
     package: https://github.com/diploi/component-supabase#v2026.02
     prebuildImage: ghcr.io/diploi/starter-web-app/supabase:[tag]
+    env:
+      include:
+        # Allow Supabase signups to redirect to the React application
+        - react.APP_ENDPOINT:ADDITIONAL_REDIRECT_URLS
 addons: []

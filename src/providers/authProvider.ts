@@ -43,6 +43,9 @@ export const authProvider: AuthProvider = {
       const { data, error } = await supabaseClient.auth.signUp({
         email,
         password,
+        options: {
+          emailRedirectTo: window.location.origin,
+        },
       });
 
       if (error) {
