@@ -18,7 +18,7 @@ components:
           value: true
   - name: Supabase
     identifier: supabase
-    package: https://github.com/diploi/component-supabase#v2026.02
+    package: https://github.com/diploi/component-supabase#fix/realtime
     prebuildImage: ghcr.io/diploi/starter-web-app/supabase:[tag]
     env:
       include:
