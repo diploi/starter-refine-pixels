@@ -1,43 +1,99 @@
-<div align="center" style="margin: 30px;">
-<a href="https://refine.dev/">
-  <img alt="refine logo" src="https://refine.ams3.cdn.digitaloceanspaces.com/readme/refine-readme-banner.png">
-</a>
+<img alt="icon" src=".diploi/icon.svg" width="32">
 
-</br>
-</br>
+# Collaborative Drawing App Starter Kit for Diploi
 
-<div align="center">
-    <a href="https://refine.dev">Home Page</a> |
-    <a href="https://discord.gg/refine">Discord</a> |
-    <a href="https://refine.dev/examples/">Examples</a> |
-    <a href="https://refine.dev/blog/">Blog</a> |
-    <a href="https://refine.dev/docs/">Documentation</a>
-</div>
-</div>
+A fun, collaborative drawing app built with **Refine**, **React (Vite)**
+and **Supabase**.
 
-</br>
-</br>
+This starter kit demonstrates:
 
-<div align="center"><strong>Build your <a href="https://reactjs.org/">React</a>-based CRUD applications, without constraints.</strong><br>An open source, headless web application framework developed with flexibility in mind.
+- 🔐 Authentication with Supabase
+- 🎨 Realtime collaborative updates
+- ⚡️ Vite-powered React frontend
+- 🗄️ Supabase DB migrations and seeded data
 
-<br />
-<br />
+---
 
-[![Discord](https://img.shields.io/discord/837692625737613362.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/refine)
-[![Twitter Follow](https://img.shields.io/twitter/follow/refine_dev?style=social)](https://twitter.com/refine_dev)
+## ✨ Overview
 
-<a href="https://www.producthunt.com/posts/refine-3?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-refine&#0045;3" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=362220&theme=light&period=daily" alt="refine - 100&#0037;&#0032;open&#0032;source&#0032;React&#0032;framework&#0032;to&#0032;build&#0032;web&#0032;apps&#0032;3x&#0032;faster | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+This starter kit consists of two Diploi components:
 
-</div>
+- **`react-vite`** -- Frontend application (Refine + React + Vite)
+- **`supabase`** -- Database, auth, and realtime backend
 
-## Try this example on your local
+Everything is wired together automatically via environment variables
+defined in `diploi.yaml`.
 
-```bash
-npm create refine-app@latest -- --example pixels
-```
+---
 
-## Try this example on CodeSandbox
+## 🧱 Architecture
 
-<br/>
+### 1️⃣ React (Vite) Component
 
-[![Open pixels example from refine](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/github/refinedev/refine/tree/main/examples/pixels?view=preview&theme=dark&codemirror=1)
+Based on the official Diploi [react-vite](https://github.com/diploi/component-react-vite) component.
+
+### Environment Variables
+
+These are automatically injected from the Supabase component:
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+
+This starter kit enables Diploi's **runtime build** mode:
+
+    - name: __VITE_RUNTIME_BUILD
+      value: true
+
+This allows environment variables to be populated correctly in
+production deployments.
+
+---
+
+### 2️⃣ Supabase Component
+
+Based on the official Diploi [supabase](https://github.com/diploi/component-supabase) component.
+
+The component automatically configures redirect URLs so authentication
+flows correctly back to the React app.
+
+---
+
+## 🔑 Default Login Credentials
+
+The database is seeded with a test account:
+
+Email: `test@example.com`\
+Password: `password`
+
+You can log in immediately after deployment.
+
+> ⚠️ Make sure to change or remove this account in production
+> environments.
+
+---
+
+## 🚀 Running on Diploi
+
+### Start a new project
+
+1.  Create a new project in Diploi
+2.  Select this starter kit
+3.  Deploy
+
+Diploi automatically:
+
+- Connects Supabase to React
+- Injects environment variables
+- Configures networking
+- Builds production images
+- Enables edge delivery via Cloudflare
+
+---
+
+## 💡 About Refine
+
+This project is originally based on the [Refine example template Pixels](https://refine.dev/core/templates/supabase-crud-app/) and
+adapted for Diploi deployments.
+
+Refine is a headless React framework for building CRUD applications:\
+https://refine.dev
