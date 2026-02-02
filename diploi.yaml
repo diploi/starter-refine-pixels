@@ -22,6 +22,9 @@ components:
     prebuildImage: ghcr.io/diploi/starter-web-app/supabase:[tag]
     env:
       include:
+        # Allow signup without email confirmation
+        - name: ENABLE_EMAIL_AUTOCONFIRM
+          value: true
         # Allow Supabase signups to redirect to the React application
         - react.APP_ENDPOINT:ADDITIONAL_REDIRECT_URLS
 addons: []
