@@ -1,7 +1,7 @@
 diploiVersion: v1.0
 type: starter
 name: Collaborative Drawing App
-description: A fun collaborative drawing app built with Refine and Supabase. Supports auth and realtime features.
+description: A fun collaborative drawing app built with Refine and Supabase. Supports auth and realtime features. Email auth built-in.
 previewImageUrls: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
 components:
   - name: React
@@ -18,7 +18,7 @@ components:
           value: true
   - name: Supabase
     identifier: supabase
-    package: https://github.com/diploi/component-supabase#fix/realtime
+    package: https://github.com/diploi/component-supabase#v2026.02
     prebuildImage: ghcr.io/diploi/starter-web-app/supabase:[tag]
     env:
       include:
