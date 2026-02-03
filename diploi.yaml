@@ -8,7 +8,7 @@ components:
     identifier: react
     folder: /
     package: https://github.com/diploi/component-react-vite#v19.2.4
-    prebuildImage: ghcr.io/diploi/starter-web-app/react:[tag]
+    prebuildImage: ghcr.io/diploi/starter-refine-pixels/react:[tag]
     env:
       include:
         - supabase.APP_ENDPOINT:VITE_SUPABASE_URL
@@ -19,7 +19,7 @@ components:
   - name: Supabase
     identifier: supabase
     package: https://github.com/diploi/component-supabase#v2026.02
-    prebuildImage: ghcr.io/diploi/starter-web-app/supabase:[tag]
+    prebuildImage: ghcr.io/diploi/starter-refine-pixels/supabase:[tag]
     env:
       include:
         # Allow signup without email confirmation
