@@ -19,7 +19,7 @@ components:
   - name: Supabase
     identifier: supabase
     package: https://github.com/diploi/component-supabase#v2026.02
-    prebuildImage: ghcr.io/diploi/starter-refine-pixels/supabase:[tag]
+    prebuildImage: public.ecr.aws/p8t2q7f4/diploi/component-supabase:[tag]
     env:
       include:
         # Allow signup without email confirmation
