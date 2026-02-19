@@ -2,6 +2,10 @@
 
 # Collaborative Drawing App Starter Kit for Diploi
 
+[![launch with diploi badge](https://diploi.com/launch.svg)](https://diploi.com/starter-kit/refine-pixels)
+[![component on diploi badge](https://diploi.com/component.svg)](https://diploi.com/starter-kit/refine-pixels)
+[![latest tag badge](https://badgen.net/github/tag/diploi/starter-refine-pixels)](https://diploi.com/starter-kit/refine-pixels)
+
 A fun, collaborative drawing app built with **Refine**, **React (Vite)**
 and **Supabase**.
 
