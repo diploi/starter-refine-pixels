@@ -2,7 +2,7 @@
 ARG FOLDER=/app
 
 # This will be set by the GitHub action if "__VITE_RUNTIME_BUILD" ENV is set in diploi.yaml
-ARG __VITE_RUNTIME_BUILD=false
+ARG __VITE_RUNTIME_BUILD=true
 
 FROM node:24-slim AS base
 
@@ -12,7 +12,12 @@ RUN corepack enable
 
 # Setup PNPM
 ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+ENV PATH="$PNPM_HOME:$PNPM_HOME/bin:$PATH"
+ENV CI=true
+ENV PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
+ENV PNPM_CONFIG_STRICT_DEP_BUILDS=false
+
+COPY --from=oven/bun:1.3.11 /usr/local/bin/bun /usr/local/bin/bun
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -23,9 +28,10 @@ WORKDIR ${FOLDER}
 
 # Install dependencies based on the preferred package manager
 RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then pnpm i --frozen-lockfile; \
+  if [ -f bun.lockb ] || [ -f bun.lock ]; then bun install --frozen-lockfile || bun install; \
+  elif [ -f yarn.lock ]; then yarn install --frozen-lockfile || yarn install; \
+  elif [ -f package-lock.json ]; then npm ci || npm i; \
+  elif [ -f pnpm-lock.yaml ]; then pnpm i --frozen-lockfile || pnpm i; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
@@ -37,7 +43,8 @@ WORKDIR ${FOLDER}
 COPY --from=deps ${FOLDER}/node_modules ./node_modules
 
 RUN \
-  if [ -f yarn.lock ]; then yarn run build; \
+  if [ -f bun.lockb ] || [ -f bun.lock ]; then bun run build; \
+  elif [ -f yarn.lock ]; then yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \
   elif [ -f pnpm-lock.yaml ]; then pnpm run build; \
   else echo "Lockfile not found." && exit 1; \
